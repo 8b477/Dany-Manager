@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+	<head>
+		<meta charset="UTF-8" />
+		<title>404 — Page introuvable</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						keyframes: {
+							float: {
+								"0%, 100%": { transform: "translateY(0)" },
+								"50%": { transform: "translateY(-8px)" },
+							},
+							blob: {
+								"0%": { transform: "translate(0px, 0px) scale(1)" },
+								"33%": { transform: "translate(20px, -10px) scale(1.1)" },
+								"66%": { transform: "translate(-10px, 10px) scale(0.9)" },
+								"100%": { transform: "translate(0px, 0px) scale(1)" },
+							},
+						},
+						animation: {
+							float: "float 3s ease-in-out infinite",
+							blob: "blob 10s ease-in-out infinite",
+						},
+					},
+				},
+			};
+		</script>
+	</head>
+	<body class="h-full bg-slate-950 text-slate-100 overflow-hidden">
+		<main class="relative h-full flex items-center justify-center px-4">
+			<!-- Background blobs -->
+			<div class="pointer-events-none absolute inset-0 overflow-hidden">
+				<div class="absolute -top-32 -left-16 h-64 w-64 rounded-full bg-sky-500/20 blur-3xl animate-blob"></div>
+				<div
+					class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-purple-500/20 blur-3xl animate-blob [animation-delay:3s]"></div>
+				<div
+					class="absolute top-1/2 left-1/2 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl animate-blob [animation-delay:6s]"></div>
+			</div>
+
+			<div class="relative z-10 max-w-xl mx-auto text-center">
+				<div
+					class="inline-flex items-center gap-2 rounded-full bg-slate-900/70 border border-slate-700/70 px-3 py-1 mb-6 backdrop-blur">
+					<span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
+					<span class="text-xs font-mono text-slate-300"> // HTTP 404 — Ressource introuvable </span>
+				</div>
+
+				<div class="mb-6">
+					<p
+						class="inline-block text-7xl md:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-sky-400 via-purple-400 to-emerald-400 animate-float">
+						404
+					</p>
+				</div>
+
+				<h1 class="text-2xl md:text-3xl font-semibold mb-3">
+					Oups, tu viens de glisser en dehors de ton app favorite 😢
+				</h1>
+
+				<p class="text-sm md:text-base text-slate-400 mb-8 max-w-md mx-auto">
+					La page que tu cherches n’existe pas (ou plus). On te propose de retourner à un endroit plus sécurisé (ou
+					pas).
+				</p>
+
+				<div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+					<a
+						href="/"
+						class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-500 text-slate-950 font-semibold text-sm hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
+						⬅ Retour à l’accueil
+					</a>
+
+					<a
+						href="/board"
+						class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-700 text-sm text-slate-200 hover:border-sky-400 hover:text-sky-300 transition-colors">
+						📋 Aller au board
+					</a>
+				</div>
+
+				<div class="max-w-md mx-auto">
+					<div
+						class="relative rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur shadow-xl overflow-hidden">
+						<div class="flex items-center gap-2 px-4 py-2 border-b border-slate-800/80 text-[10px] text-slate-500">
+							<span class="w-2 h-2 rounded-full bg-red-500/80"></span>
+							<span class="w-2 h-2 rounded-full bg-amber-500/80"></span>
+							<span class="w-2 h-2 rounded-full bg-emerald-500/80"></span>
+							<span class="ml-3 font-mono"> ~/workspace/dany-manager/404 </span>
+						</div>
+						<div class="px-4 py-3 text-left">
+							<pre class="font-mono text-[11px] md:text-xs text-slate-300 whitespace-pre leading-relaxed">
+<span class="text-sky-400">throw</span> new <span class="text-emerald-400">TaToutKC</span>(
+    path: <span class="text-amber-300">'/m👀n'</span>,
+    hint: <span class="text-amber-300">'try / die / retry'</span>
+);</pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

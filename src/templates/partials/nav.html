@@ -1,0 +1,45 @@
+<nav
+	class="fixed top-0 w-full border-b border-primary/30 bg-background/90 backdrop-blur-md flex justify-between items-center px-6 h-16 z-50 font-body tracking-tight text-on-background">
+	<div class="flex items-center gap-8">
+		<a href="/" class="text-2xl font-black tracking-tighter neon-text-blue nav-logo">DANY-MANAGER</a>
+		<div class="hidden md:flex gap-6 items-center uppercase text-xs tracking-widest">
+			<a
+				class="{{ active_page == 'home' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant' }} hover:text-primary transition-all duration-200"
+				href="/"
+				>Accueil</a
+			>
+			<a
+				class="{{ active_page == 'board' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant' }} hover:text-primary transition-all duration-200"
+				href="/board"
+				>Board</a
+			>
+			<a
+				class="{{ active_page == 'profile' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant' }} hover:text-primary transition-all duration-200"
+				href="/profile"
+				>Profile</a
+			>
+		</div>
+	</div>
+	{% set userName = session('userSession.name') %} {% if userName is not null and userName is not empty %}
+	<div class="flex items-center gap-4">
+		<form action="/logout" method="post">
+			<button type="submit" class="p-2 hover:bg-surface-container transition-colors duration-200">
+				<span class="text-red-300 font-thin">Déconnexion</span>
+			</button>
+		</form>
+	</div>
+	{% else %}
+	<div class="flex items-center gap-4">
+		<button
+			id="openLoginModal"
+			class="px-4 py-1 text-xs uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-all duration-200">
+			Connexion
+		</button>
+		<button
+			id="openRegisterModal"
+			class="px-6 py-2 bg-primary text-on-primary font-bold uppercase tracking-tighter hover:bg-secondary transition-all duration-200 neon-border-blue hover:neon-border-magenta">
+			Inscription
+		</button>
+	</div>
+	{% endif %}
+</nav>

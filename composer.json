@@ -1,0 +1,17 @@
+{
+	"require": {
+		"twig/twig": "^3.24"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "src/",
+			"App\\Configs\\": "src/configs/",
+			"App\\Controllers\\": "src/controllers/",
+			"App\\Repositories\\": "src/repositories/",
+			"App\\Services\\": "src/services/",
+			"App\\Dtos\\": "src/dtos/",
+			"App\\Entities\\": "src/entities/",
+			"App\\Mappers\\": "src/mappers/"
+		}
+	}
+}

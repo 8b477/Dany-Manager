@@ -1,0 +1,20 @@
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t border-primary/30 h-16 flex items-center justify-around z-50 px-4">
+	<a class="{{ active_page == 'home' ? 'text-primary' : 'text-on-surface-variant' }} flex flex-col items-center gap-1" href="/">
+		<span class="material-symbols-outlined">home</span>
+		<span class="text-[10px] font-bold uppercase tracking-widest">Accueil</span>
+	</a>
+	<a class="{{ active_page == 'board' ? 'text-primary' : 'text-on-surface-variant' }} flex flex-col items-center gap-1" href="/board">
+		<span class="material-symbols-outlined" {% if active_page == 'board' %}style="font-variation-settings: 'FILL' 1;"{% endif %}>dashboard</span>
+		<span class="text-[10px] font-bold uppercase tracking-widest">Board</span>
+	</a>
+	<a class="{{ active_page == 'profile' ? 'text-primary' : 'text-on-surface-variant' }} flex flex-col items-center gap-1" href="/profile">
+		<span class="material-symbols-outlined" {% if active_page == 'profile' %}style="font-variation-settings: 'FILL' 1;"{% endif %}>account_circle</span>
+		<span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+	</a>
+	<a class="text-on-surface-variant flex flex-col items-center gap-1" href="#">
+		<span class="material-symbols-outlined">settings</span>
+		<span class="text-[10px] font-bold uppercase tracking-widest">Configuration</span>
+	</a>
+</nav>
+	</a>
+</nav>

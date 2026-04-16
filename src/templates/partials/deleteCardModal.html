@@ -1,0 +1,26 @@
+<div id="deleteCardModal" class="fixed inset-0 z-100 hidden items-center justify-center">
+	<div id="deleteCardBackdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+	<div class="relative z-10 w-full max-w-sm mx-4 border border-error/30 bg-surface p-8 code-shadow">
+		<h2 class="text-xl font-headline font-black tracking-tighter text-error uppercase mb-4">Supprimer la carte</h2>
+		<p class="text-on-surface-variant text-sm mb-8">
+			Confirmer la suppression de <span id="deleteCardName" class="text-on-surface font-bold"></span> ?
+		</p>
+		<div class="flex w-full gap-4">
+			<button
+				id="deleteCardCancel"
+				type="button"
+				class="w-1/2 py-3 border border-outline text-on-surface text-sm uppercase tracking-widest hover:bg-surface-container transition-all">
+				Annuler
+			</button>
+			<form id="deleteCardForm" class="w-1/2" action="/board/delete" method="post">
+				<input type="hidden" id="deleteCardId" name="card_id" value="" />
+				<button
+					id="deleteCardConfirm"
+					type="submit"
+					class="w-full py-3 bg-error text-on-error font-bold text-sm uppercase tracking-widest hover:opacity-80 transition-all">
+					Supprimer
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

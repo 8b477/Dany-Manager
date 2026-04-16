@@ -1,0 +1,185 @@
+{% extends 'defaultLayout.html' %} {% block title %}DANY-MANAGER — Precision in Darkness{% endblock %} {% block content
+%}
+
+<section class="relative min-h-[217.5px] flex flex-col items-center justify-center px-6 overflow-hidden">
+	<div class="absolute inset-0 z-0">
+		<div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-100 h-100 bg-primary/10 blur-[150px] rounded-full"></div>
+		<div class="absolute bottom-1/4 right-1/4 w-75 h-75 bg-secondary/10 blur-[120px] rounded-full"></div>
+	</div>
+	<div class="relative z-10 max-w-5xl w-full text-center">
+		<div class="inline-flex items-center gap-2 px-4 py-1 border border-tertiary bg-tertiary/10 mb-10">
+			<span class="w-2 h-2 bg-tertiary shadow-[0_0_8px_#39ff14]"></span>
+			<span class="text-[10px] font-label uppercase tracking-[0.3em] neon-text-green">System Status: Bêta</span>
+		</div>
+		<h1 class="text-7xl md:text-9xl font-headline font-black tracking-tighter mb-8 leading-[0.9] italic">
+			Precision in <br />
+			<span class="neon-text-magenta">Darkness</span>
+		</h1>
+		<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 leading-relaxed font-body">
+			Un super gestionnaire de tâches pour les développeurs, toute actions de l'interface dispo depuis le terminal,
+			garde un historique complet de toutes les actions projet par projet.
+		</p>
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+			<a
+				href="/signup"
+				class="w-full sm:w-auto px-10 py-5 bg-primary text-on-primary font-bold text-lg uppercase tracking-tighter hover:bg-secondary hover:text-white transition-all neon-border-blue active:translate-y-1">
+				Mon premier projet
+			</a>
+			<button
+				class="w-full sm:w-auto px-10 py-5 border border-primary/50 bg-transparent hover:border-secondary text-on-background font-bold text-lg uppercase tracking-tighter transition-all flex items-center justify-center gap-2 active:translate-y-1">
+				<span class="material-symbols-outlined neon-text-blue">terminal</span>
+				Regarder une démo
+			</button>
+		</div>
+	</div>
+	<div class="relative z-10 mt-24 w-full max-w-6xl mx-auto px-4">
+		<div
+			class="border border-primary/30 bg-surface shadow-[0_0_50px_rgba(0,243,255,0.1)] overflow-hidden aspect-video relative">
+			<img
+				class="w-full h-full object-cover grayscale brightness-75 contrast-125 opacity-60"
+				alt="Cyberpunk dev dashboard"
+				src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp6MIWS_EJAUtM1ju39dKjNUaVPPdccvZpXLMLrQFeh6MQU7072V3cBP4VapODc5XUWeQt0KxK7TRn1cEO6IwfmG1yX4jooHSlxtFZGDDlA4hhqZs0n9r7lArpn3J0Vm981lHjtvZkAe-snPJXBE3ZsxPQQ_82EWJumsWeUEYAp_A9dTXgiKgB6DToWkvNh0cJDDgZs3_H7g5D2qLkfCGY7NMffj1L0SHA3puka2qGEChT3MHFqNimUMnwSL3Yl5_sACzZzLqoGCD_" />
+			<div class="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent"></div>
+			<div class="absolute top-0 left-0 w-full h-1 bg-primary/40"></div>
+			<div class="absolute bottom-10 left-10 p-4 border border-primary/20 bg-black/80 backdrop-blur-sm hidden md:block">
+				<p class="text-[10px] text-primary uppercase tracking-widest font-bold">// COMING SOON</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+{# ── Features Section ── #}
+<section class="py-32 px-6 max-w-7xl mx-auto">
+	<div class="mb-20">
+		<h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4 italic neon-text-blue">
+			Créer votre workflow ultime
+		</h2>
+		<p class="text-on-surface-variant font-body uppercase tracking-widest text-sm">
+			Toute action est stocker dans un historique complet, projet par projet, accessible depuis l'interface graphique ou
+			le terminal.
+		</p>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+		{# Card 1: Extreme Speed (wide) #}
+		<div
+			class="md:col-span-2 group border border-primary/20 bg-surface-container p-10 hover:border-primary transition-all duration-300 relative overflow-hidden">
+			<div class="absolute top-0 right-0 p-2 text-[10px] text-primary/30 uppercase font-bold">1</div>
+			<div class="flex flex-col h-full justify-between">
+				<div>
+					<div
+						class="w-14 h-14 border border-primary flex items-center justify-center text-primary mb-8 neon-border-blue">
+						<span class="text-3xl">⚡</span>
+					</div>
+					<h3 class="text-3xl font-headline font-bold mb-6 italic">Super rapide</h3>
+					<p class="text-on-surface-variant max-w-md font-body leading-relaxed">
+						Optimisé pour la vitesse, avec une interface réactive et des temps de chargement quasi instantanés. Gagnez
+						du temps à chaque interaction.
+					</p>
+				</div>
+				<div class="mt-16 flex gap-6 overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity">
+					<div class="px-4 py-2 border border-primary/30 font-mono text-[10px] bg-black text-primary uppercase">
+						Latence: -10ms
+					</div>
+					<div class="px-4 py-2 border border-primary/30 font-mono text-[10px] bg-black text-primary uppercase">
+						Débit: 1.2gb/s
+					</div>
+				</div>
+			</div>
+		</div>
+		{# Card 2: Developer Grade #}
+		<div
+			class="border border-secondary/20 bg-surface-container p-10 hover:border-secondary transition-all duration-300 relative overflow-hidden">
+			<div class="absolute top-0 right-0 p-2 text-[10px] text-secondary/30 uppercase font-bold">2</div>
+			<div
+				class="w-14 h-14 border border-secondary flex items-center justify-center text-secondary mb-8 neon-border-magenta">
+				<span class="text-3xl">👨🏻‍💻</span>
+			</div>
+			<h3 class="text-3xl font-headline font-bold mb-6 italic">Dev First</h3>
+			<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+				Tout est pensé et optimisé pour les développeurs.
+			</p>
+		</div>
+		{# Card 3: Deep Focus #}
+		<div
+			class="border border-tertiary/20 bg-surface-container p-10 hover:border-tertiary transition-all duration-300 relative overflow-hidden">
+			<div class="absolute top-0 right-0 p-2 text-[10px] text-tertiary/30 uppercase font-bold">3</div>
+			<div
+				class="w-14 h-14 border border-tertiary flex items-center justify-center text-tertiary mb-8 neon-border-green">
+				<span class="text-3xl">🧠</span>
+			</div>
+			<h3 class="text-3xl font-headline font-bold mb-6 italic">Focus Max</h3>
+			<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+				Mode zen et minuteries de concentration intégrés à l'expérience principale. Éliminez le bruit.
+			</p>
+		</div>
+		{# Card 4: Precision Workflow (wide) #}
+		<div
+			class="md:col-span-2 border border-primary/20 bg-surface-container p-10 hover:border-primary transition-all duration-300 overflow-hidden relative">
+			<div class="absolute top-0 right-0 p-2 text-[10px] text-primary/30 uppercase font-bold">4</div>
+			<div class="flex flex-col md:flex-row gap-12 items-center">
+				<div class="flex-1">
+					<h3 class="text-3xl font-headline font-bold mb-6 italic">Précision chirurgicale</h3>
+					<p class="text-on-surface-variant font-body leading-relaxed">
+						Tableaux kanban personnalisables, diagrammes de Gantt et vues en liste qui s'adaptent à votre modèle mental
+						de productivité.
+					</p>
+				</div>
+				<div class="flex-1 grid grid-cols-3 gap-3 w-full">
+					<div class="h-28 border border-primary/20 bg-black/50"></div>
+					<div class="h-36 border border-secondary bg-secondary/10 neon-border-magenta"></div>
+					<div class="h-24 border border-tertiary/20 bg-black/50"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{# ── Stats Section ── #}
+<section class="py-24 border-y border-primary/20 bg-surface-container-lowest">
+	<div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+		<div class="text-center">
+			<div class="text-5xl font-headline font-black neon-text-blue mb-4">50K+</div>
+			<div class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant">Active_Operators</div>
+		</div>
+		<div class="text-center">
+			<div class="text-5xl font-headline font-black neon-text-green mb-4">0.0MS</div>
+			<div class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant">Visual_Latency</div>
+		</div>
+		<div class="text-center">
+			<div class="text-5xl font-headline font-black text-on-background mb-4">128B</div>
+			<div class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant">Encryption_Grade</div>
+		</div>
+		<div class="text-center">
+			<div class="text-5xl font-headline font-black neon-text-magenta mb-4">99.9%</div>
+			<div class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant">System_Uptime</div>
+		</div>
+	</div>
+</section>
+
+{# ── CTA Section ── #}
+<section class="py-40 px-6">
+	<div
+		class="max-w-5xl mx-auto text-center border border-primary bg-black p-16 relative overflow-hidden neon-border-blue">
+		<div class="absolute -top-32 -right-32 w-80 h-80 bg-secondary/5 blur-[100px] rounded-full"></div>
+		<div class="absolute -bottom-32 -left-32 w-80 h-80 bg-primary/5 blur-[100px] rounded-full"></div>
+		<h2 class="text-5xl md:text-7xl font-headline font-black tracking-tight mb-8 italic uppercase">
+			Prêt à maîtriser votre workflow?
+		</h2>
+		<p class="text-xl text-on-surface-variant mb-14 font-body max-w-2xl mx-auto">
+			Rejoins les milliers de développeurs qui ont trouvé la précision dans les ténèbres.
+		</p>
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-8">
+			<button
+				disabled
+				class="px-12 py-5 bg-secondary text-white font-bold uppercase tracking-tighter text-lg neon-border-magenta hover:bg-primary hover:neon-border-blue transition-all active:scale-95">
+				Connect Terminal
+			</button>
+			<button
+				disabled
+				class="px-12 py-5 border border-primary/50 bg-transparent text-primary font-bold uppercase tracking-tighter text-lg hover:border-primary transition-all active:scale-95">
+				Read Docs
+			</button>
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html class="dark" lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}DANY-MANAGER{% endblock %}</title>
+		<link href="/assets/styles/tailwind.css" rel="stylesheet" />
+		<script src="/assets/js/loginModal.js" defer></script>
+		<script src="/assets/js/registerModal.js" defer></script>
+	</head>
+	<body class="bg-background text-on-background selection:bg-secondary/40 selection:text-white">
+		{% include 'nav.html' %} {% include 'loginModal.html' %} {% include 'registerModal.html' %}
+
+		<main class="pt-16 cyber-grid">{% block content %}{% endblock %}</main>
+
+		{% include 'footer.html' %}
+	</body>
+</html>

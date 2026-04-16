@@ -1,0 +1,120 @@
+<!-- Overlay -->
+<div
+	id="registerModal"
+	data-open="{{ open_modal == 'registerModal' ? '1' : '0' }}"
+	class="fixed inset-0 z-100 hidden items-center justify-center">
+	<!-- Backdrop -->
+	<div id="registerBackdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+	<!-- Modal -->
+	<div class="relative z-10 w-full max-w-md mx-4 border border-primary/30 bg-surface p-8 code-shadow">
+		<!-- Header -->
+		<div class="flex justify-between items-center mb-8">
+			<h2 class="text-2xl font-headline font-black tracking-tighter neon-text-blue uppercase">Inscription</h2>
+			<button
+				id="closeRegisterModal"
+				class="text-on-surface-variant hover:text-error transition-colors w-12 h-12 flex items-center justify-center hover:cursor-pointer rounded-full hover:bg-error/10">
+				<span>X</span>
+			</button>
+		</div>
+
+		<!-- Form -->
+		<form id="registerForm" method="POST" action="/register">
+			<div class="mb-6">
+				<label
+					class="block text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-2 font-label"
+					for="username">
+					Nom du sujet
+				</label>
+				<input
+					id="username"
+					type="text"
+					name="username"
+					required
+					class="w-full px-4 py-3 bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all"
+					placeholder="Jack"
+					value="{{ form_data.username ?? '' }}" />
+			</div>
+
+			<div class="mb-8">
+				<label class="block text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-2 font-label" for="email">
+					Email
+				</label>
+				<input
+					id="email"
+					type="email"
+					name="email"
+					required
+					class="w-full px-4 py-3 bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all"
+					placeholder="user@mail.dev"
+					value="{{ form_data.email ?? '' }}" />
+			</div>
+
+			<div class="mb-8">
+				<label
+					class="block text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-2 font-label"
+					for="password">
+					Mot de passe
+				</label>
+				<input
+					id="password"
+					type="password"
+					name="password"
+					required
+					class="w-full px-4 py-3 bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all"
+					placeholder="••••••••" />
+			</div>
+
+			<div class="mb-8">
+				<label
+					class="block text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-2 font-label"
+					for="confirm_password">
+					Confirmer le mot de passe
+				</label>
+				<input
+					id="confirm_password"
+					type="password"
+					name="confirm_password"
+					required
+					class="w-full px-4 py-3 bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all"
+					placeholder="••••••••" />
+			</div>
+
+			<div class="flex items-center justify-center mb-8 h-4">
+				<label
+					class="text-[13px] underline underline-offset-2 pe-2 uppercase tracking-[0.3em] text-on-surface-variant font-label font-extrabold hover:text-secondary hover:cursor-pointer transition-colors"
+					for="remember_me">
+					Se souvenir de moi
+				</label>
+				<input
+					id="remember_me"
+					type="checkbox"
+					name="remember_me"
+					value="1"
+					class="bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all" />
+			</div>
+
+			<!-- Error message slot -->
+			<div
+				id="registerError"
+				class="{{ register_errors is defined and register_errors|length ? 'mb-4 px-4 py-2 border border-error bg-error/10 text-error text-xs font-label' : 'hidden mb-4 px-4 py-2 border border-error bg-error/10 text-error text-xs font-label' }}">
+				{% if register_errors is defined and register_errors|length %} {% for error in register_errors %}
+				<p>{{ error }}</p>
+				{% endfor %} {% endif %}
+			</div>
+
+			<button
+				type="submit"
+				class="w-full py-4 bg-primary text-on-primary font-bold uppercase tracking-tighter text-sm hover:bg-secondary hover:text-white transition-all neon-border-blue hover:neon-border-magenta active:translate-y-1 hover:cursor-pointer">
+				S'inscrire
+			</button>
+		</form>
+
+		<p class="mt-6 text-center text-xs text-on-surface-variant">
+			Déjà un compte ?
+			<button id="toggleLoginModal" class="text-secondary hover:text-primary transition-colors hover:cursor-pointer">
+				Se connecter
+			</button>
+		</p>
+	</div>
+</div>

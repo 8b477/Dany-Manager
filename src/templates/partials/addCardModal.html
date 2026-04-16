@@ -1,0 +1,96 @@
+<!-- Overlay -->
+<div
+	id="addCardModal"
+	data-open="{{ form_data.open_modal is defined and form_data.open_modal == 'addCardModal' ? '1' : '0' }}"
+	class="fixed inset-0 z-100 hidden items-center justify-center">
+	<!-- Backdrop -->
+	<div id="addCardBackdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+	<!-- Modal -->
+	<div class="relative z-10 w-full max-w-md mx-4 border border-primary/30 bg-surface p-8 code-shadow">
+		<!-- Header -->
+		<div class="flex justify-between items-center mb-8">
+			<h2 class="text-2xl font-headline font-black tracking-tighter neon-text-blue uppercase">Nouvelle Carte</h2>
+			<button
+				id="closeAddCardModal"
+				class="text-on-surface-variant hover:text-error transition-colors w-12 h-12 flex items-center justify-center hover:cursor-pointer rounded-full hover:bg-error/10">
+				<span>X</span>
+			</button>
+		</div>
+
+		<!-- Form -->
+		<form id="addCardForm" method="POST" action="/board/addCard">
+
+			<div class="mb-6">
+				<label class="block text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-2 font-label" for="name">
+					Nom de la carte
+				</label>
+				<input
+					id="name"
+					type="text"
+					name="name"
+					value="{{ form_data.name ?? '' }}"
+					required
+					class="w-full px-4 py-3 bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all"
+					placeholder="Nom de la carte" />
+			</div>
+
+			<div class="mb-8">
+				<label
+					class="block text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-2 font-label"
+					for="description">
+					Description
+				</label>
+				<input
+					id="description"
+					type="text"
+					name="description"
+					value="{{ form_data.description ?? '' }}"
+					required
+					class="w-full px-4 py-3 bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all"
+					placeholder="Description de la carte" />
+			</div>
+
+			<div class="mb-6">
+				<label
+					class="block text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-2 font-label"
+					for="category_id">
+					Catégorie
+				</label>
+				<select
+					id="category_id"
+					name="category_id"
+					required
+					class="w-full px-4 py-3 bg-surface-container border border-outline text-on-surface font-body text-sm focus:border-primary focus:outline-none focus:glow-primary transition-all">
+					{% for category in categories %}
+					<option value="{{ category.id }}">{{ category.name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<!-- Error message slot -->
+			<div
+				id="addCardError"
+				class="{{ add_card_errors is defined and add_card_errors|length
+    ? 'mb-4 px-4 py-2 border border-error bg-error/10 text-error text-xs font-label'
+    : 'hidden mb-4 px-4 py-2 border border-error bg-error/10 text-error text-xs font-label' }}">
+				{% if add_card_errors is defined and add_card_errors|length %} {% for field, fieldErrors in add_card_errors %}
+				{% for message in fieldErrors %}
+				<p>{{ message }}</p>
+				{% endfor %} {% endfor %} {% endif %}
+			</div>
+
+			<button
+				type="submit"
+				class="w-full py-4 bg-primary text-on-primary font-bold uppercase tracking-tighter text-sm hover:bg-secondary hover:text-white hover:cursor-pointer transition-all neon-border-blue hover:neon-border-magenta active:translate-y-1">
+				Créer la carte
+			</button>
+		</form>
+
+		<p class="mt-6 text-center text-xs text-on-surface-variant">
+			<button id="cancelAddCardModal" class="text-secondary hover:text-primary transition-colors hover:cursor-pointer">
+				Annuler
+			</button>
+		</p>
+	</div>
+</div>

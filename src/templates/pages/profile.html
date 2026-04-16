@@ -1,0 +1,155 @@
+{% extends 'profileLayout.html' %} {% block title %}DANY-MANAGER — Profile{% endblock %} {% block content %}
+<div class="max-w-4xl mx-auto">
+	<div class="mb-12">
+		<h1 class="text-4xl font-headline font-black tracking-tighter mb-2">
+			{{ session('userSession.name') ?? 'Utilisateur' }}
+		</h1>
+		<p class="text-on-surface-variant font-body text-sm uppercase tracking-widest">Fiche technique du sujet</p>
+	</div>
+
+	<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+		<div
+			class="md:col-span-5 bg-surface-container border border-outline-variant p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+			<div class="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent pointer-events-none"></div>
+			<div class="relative z-10 text-center">
+				<div
+					class="w-32 h-32 bg-surface-container-lowest border-2 border-primary/40 flex items-center justify-center mb-6 relative p-1">
+					<div
+						class="w-full h-full border border-primary/20 bg-surface-dim flex items-center justify-center overflow-hidden">
+						<img
+							alt="Terminal Avatar"
+							class="w-full h-full object-cover opacity-80"
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg7OZ7H-c2fK1lHsOGM3XoHj223c_9WSlPSYNxub_HTyMgzITp_ch3xBhe7eqdyrYOw6mmVJuO1avd4cYIqX7ViAazWPljyB2yoa8amACoiTqeAkVqZ0vjwt_jNBE08avWruUmDNIoi3Z6h54dHr5PMchMj-i7dryn3p8yL3doKWMaOMGQ_Fnj0BJTabq2Sx4x0A_XIW8L3AhTlv2xRJkSKUmWGhB5hFa99zEHnq_6HDywMYnB9Oj2A429472E8ddAbK5iRzNwB6j_" />
+					</div>
+					<div
+						class="absolute -bottom-2 -right-2 bg-tertiary px-2 py-0.5 text-[10px] text-on-tertiary font-bold uppercase">
+						Online
+					</div>
+				</div>
+				<h2 class="text-xl font-bold text-on-surface font-body">{{ session('userSession.name') ?? 'Anonyme' }}</h2>
+				<p class="text-on-surface-variant text-xs mt-1">Level 42 Architect</p>
+			</div>
+			<div
+				class="w-full mt-8 pt-6 border-t border-outline-variant font-body text-[11px] text-on-surface-variant space-y-2">
+				<div class="flex justify-between">
+					<span>UID:</span>
+					<span class="text-primary">{{ session('userSession.id') ?? '8b477' }}</span>
+				</div>
+				<div class="flex justify-between">
+					<span>LAST_SYNC:</span>
+					<span class="neon-text-green">{{ "now"|date("d/m/Y H:i") }}</span>
+				</div>
+				<div class="flex justify-between">
+					<span>REGION:</span>
+					<span class="text-on-surface">EUROPE</span>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="md:col-span-7 space-y-6">
+			<div class="bg-surface-container border border-outline-variant p-8">
+				<h3 class="font-body font-bold text-sm text-primary mb-6 flex items-center gap-2 uppercase tracking-widest">
+					<span class="material-symbols-outlined text-sm">Fiche technique - </span>
+					ID
+				</h3>
+				<div class="space-y-4">
+					<div class="space-y-2">
+						<label class="text-xs font-body text-on-surface-variant tracking-widest uppercase">Nom du sujet</label>
+						<div class="relative">
+							<input
+								disabled
+								class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary px-4 py-3 font-body text-sm text-on-surface outline-none transition-all"
+								type="text"
+								value="{{ session('userSession.name') ?? '' }}" />
+							<span class="absolute right-3 top-3 material-symbols-outlined text-outline text-sm">Valider</span>
+						</div>
+					</div>
+					<div class="space-y-2">
+						<label class="text-xs font-body text-on-surface-variant tracking-widest uppercase">Emai du sujet</label>
+						<div class="relative">
+							<input
+								disabled
+								class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary px-4 py-3 font-body text-sm text-on-surface outline-none transition-all"
+								type="email"
+								value="{{ session('userSession.email') ?? '' }}" />
+							<span class="absolute right-3 top-3 material-symbols-outlined text-outline text-sm">Valider</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="bg-surface-container border border-outline-variant p-8">
+				<h3 class="font-body font-bold text-sm text-primary mb-6 flex items-center gap-2 uppercase tracking-widest">
+					<span class="material-symbols-outlined text-sm">Sécurité - </span>
+					Donnée sensible
+				</h3>
+				<div class="space-y-4">
+					<div class="space-y-2">
+						<label class="text-xs font-body text-on-surface-variant tracking-widest uppercase"
+							>Nouveau mot de passe</label
+						>
+						<input
+							class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary px-4 py-3 font-body text-sm text-on-surface outline-none transition-all"
+							placeholder="••••••••••••"
+							type="password" />
+					</div>
+					<div class="space-y-2">
+						<label class="text-xs font-body text-on-surface-variant tracking-widest uppercase"
+							>Confirmer le mot de passe</label
+						>
+						<input
+							class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary px-4 py-3 font-body text-sm text-on-surface outline-none transition-all"
+							placeholder="••••••••••••"
+							type="password" />
+					</div>
+				</div>
+			</div>
+	
+			<div class="flex items-center justify-between pt-4">
+				<button
+					class="text-on-surface-variant hover:text-on-surface font-body text-xs underline underline-offset-4 decoration-outline transition-all uppercase tracking-widest">
+					Annuler les modifications
+				</button>
+				<button
+					class="bg-secondary text-on-secondary font-bold text-sm px-8 py-3 glow-magenta hover:bg-primary hover:text-on-primary transition-all active:scale-95 flex items-center gap-2 uppercase tracking-tighter">
+					<span class="material-symbols-outlined text-sm">💾</span>
+					Modifications du spécimen
+				</button>
+			</div>
+		</div>
+
+
+		<div class="md:col-span-4 bg-surface-container-low border border-outline-variant p-6">
+			<div class="flex items-center gap-2 mb-4">
+				<span class="material-symbols-outlined text-tertiary">monitoring</span>
+				<h4 class="font-body font-bold text-xs uppercase tracking-wider text-on-surface-variant">System Health</h4>
+			</div>
+			<div class="h-2 w-full bg-surface-container-lowest overflow-hidden">
+				<div class="h-full bg-tertiary w-[88%]"></div>
+			</div>
+			<p class="font-body text-[10px] mt-2 text-on-surface-variant text-right">88% Uptime Optimized</p>
+		</div>
+		<div class="md:col-span-4 bg-surface-container-low border border-outline-variant p-6">
+			<div class="flex items-center gap-2 mb-4">
+				<span class="material-symbols-outlined text-primary">storage</span>
+				<h4 class="font-body font-bold text-xs uppercase tracking-wider text-on-surface-variant">Cloud Storage</h4>
+			</div>
+			<div class="h-2 w-full bg-surface-container-lowest overflow-hidden">
+				<div class="h-full bg-primary w-[34%]"></div>
+			</div>
+			<p class="font-body text-[10px] mt-2 text-on-surface-variant text-right">34.2 GB / 100 GB</p>
+		</div>
+		<div class="md:col-span-4 bg-surface-container-low border border-outline-variant p-6">
+			<div class="flex items-center gap-2 mb-4">
+				<span class="material-symbols-outlined text-error">warning</span>
+				<h4 class="font-body font-bold text-xs uppercase tracking-wider text-on-surface-variant">Alert Protocol</h4>
+			</div>
+			<div class="flex items-center gap-2">
+				<span class="w-2 h-2 bg-tertiary animate-pulse"></span>
+				<span class="font-body text-[10px] neon-text-green">All nodes operational</span>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!doctype html>
+<html class="dark" lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}Obsidian{% endblock %}</title>
+		<link href="/assets/styles/tailwind.css" rel="stylesheet" />
+	</head>
+	<body class="bg-background text-on-background selection:bg-secondary/40 selection:text-white">
+		{% include 'appNav.html' %}
+
+		<main class="mx-auto mt-16 p-8 min-h-[calc(100vh-64px)] dot-grid">{% block content %}{% endblock %}</main>
+
+		{% include 'mobileNav.html' %}
+	</body>
+</html>

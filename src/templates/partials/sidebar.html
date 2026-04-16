@@ -1,0 +1,70 @@
+<aside
+	class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-background font-body text-sm border-r border-primary/30 flex flex-col z-40 lg:flex">
+	<div class="p-4 border-b border-primary/30">
+		<div class="flex items-center gap-3 mb-4">
+			<div
+				class="w-10 h-10 bg-surface-container-highest border border-outline-variant flex items-center justify-center">
+				<span class="text-primary">👽</span>
+			</div>
+			<div>
+				<div class="font-bold text-on-surface uppercase text-xs tracking-wider">Project_Alpha</div>
+				<div class="text-[10px] text-on-surface-variant uppercase tracking-widest">v1.0.4-stable</div>
+			</div>
+		</div>
+		<button
+			id="openAddCardModal"
+			type="button"
+			data-open-add-card
+			class="w-full py-2 bg-primary text-on-primary font-bold glow-primary hover:bg-secondary hover:text-on-secondary transition-all active:scale-95 flex items-center justify-center gap-2 uppercase text-xs tracking-widest">
+			+ Nouvelle tâche
+		</button>
+	</div>
+	<nav class="flex-1 flex-nowrap py-4 overflow-y-auto cursor-not-allowed">
+		<div class="px-3 mb-2 text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Historique</div>
+		<hr class="divide-cyan-200" />
+		<a
+			class="{{ sidebar_active == 'active' ? 'bg-surface-container text-primary border-l-4 border-primary' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface' }} flex items-center gap-3 px-4 py-3 transition-all duration-150"
+			href="#">
+			<span class="shrink-0">🧬</span>
+			<span class="truncate min-w-0">Nom du projet</span>
+		</a>
+		<hr class="divide-cyan-200" />
+		<a
+			class="flex items-center gap-3 overflow-hidden text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:text-on-surface transition-all duration-150"
+			href="#"
+			><span class="shrink-0">➕</span><span class="truncate min-w-0">Blabla nouvelle tâche super longue</span></a
+		>
+		<a
+			class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:text-on-surface transition-all duration-150"
+			href="#">
+			<span class="shrink-0">✏️</span>
+			<span class="truncate min-w-0">blabla tâche modifiée</span>
+		</a>
+		<a
+			class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:text-on-surface transition-all duration-150"
+			href="#">
+			<span class="shrink-0">🗄️</span>
+			<span class="truncate min-w-0">blabla tâche archivée</span>
+		</a>
+		<a
+			class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:text-on-surface transition-all duration-150"
+			href="#">
+			<span class="shrink-0">🗑️</span>
+			<span class="truncate min-w-0">blabla tâche supprimée</span>
+		</a>
+	</nav>
+	<div class="p-4 border-t border-primary/30">
+		<a
+			class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container hover:text-on-surface transition-all"
+			href="#">
+			<span class="shrink-0">🕒</span>
+			<span class="truncate min-w-0">Dernière action logs</span>
+		</a>
+		<a
+			class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container hover:text-on-surface transition-all"
+			href="#">
+			<span class="shrink-0">📄</span>
+			<span class="truncate min-w-0">Docs</span>
+		</a>
+	</div>
+</aside>

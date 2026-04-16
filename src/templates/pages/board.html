@@ -1,0 +1,151 @@
+{% extends 'appLayout.html' %} {% block title %} DANY-MANAGER — Board {% endblock %} {% block content %} {% include
+'addCardModal.html' %} {% include 'sidebar.html' %} {% include 'deleteCardModal.html' %} {% include 'editCardModal.html'
+%}
+
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+	<div>
+		<h1 class="text-4xl font-headline font-black tracking-tighter text-on-surface mb-2">Nom du projet actif</h1>
+		<p class="text-on-surface-variant font-body text-sm">
+			path: <span class="text-primary">/home/workspace/tasks/board</span>
+		</p>
+	</div>
+	<div class="flex items-center gap-3">
+		<div class="flex -space-x-2">
+			<img
+				alt="Member 1"
+				class="w-8 h-8 rounded-full border-2 border-background"
+				src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAIXTe4gRWvKCFnAoyslOXNOfiiYwrNp9F6gu61yyN2z3uY7AW_rLGI56zYVHLxMOHr3XCpR0MfQ_GZWu0f9gsgS1p1aP3CxcTWPeRKMiyuAn-7F3M3Rrfnknye2CO0sKoKJxn2mplXx7lND0JOEIm-Kj1t4qGHzjvjxjEaHbHdqzRCMBw6jq95LmO8MvAYvR6J9EuG0lQ7IF9-UZ0TpNwlJC1rHTN9L4kMvH-VAXNac_Z74Sc4K0l0JP344gj8wvTiAP2HU2aZFgf" />
+			<img
+				alt="Member 2"
+				class="w-8 h-8 rounded-full border-2 border-background"
+				src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsSGGmRweYT1LpEztd0eb2dCSNrL3RR3uyD0PVdF_zjmi-nga5GUGmAuhBHk3QXUMpoI5mcmX5-jcWWVU_YWsJ_HQey2xpddsO7eALIlbn0uBc9pMEYyBwV0gjnp41BiNkh0b_uqVOPxnG8OVUlcUj3b38QzNhcfCVuTS4Spytf1a9wA4AioJdEu8C-OrcuCB3EuvPbVzUPYrTFHPupu6WmykxPSdUkUVBR6o4KhXaj_nxSgIR4gN3J2tnS-sdjNxWSWVZJ42kQ5dm" />
+			<img
+				alt="Member 3"
+				class="w-8 h-8 rounded-full border-2 border-background"
+				src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLrDDTPsqTWGrOxyi_bgs-ATCKTAXd-QY_pTdu_Rx67j6gIg0viE70XJXcjmCqMue98XoL8kRqGNB9cunbdXCKw6Z54G0StTBJhOc24-czFkF06R2gD5L_-KvTYpYSGs-PbgTJWiWL5V8jzH8WIlpI5kTV3bj5OLI6yZPY3Br8fOvY8_6TiFwWmuyS755eWOi7WNlNYP_2rjBMToR7bR3-5G3cz6Up53Ho-UqNDprVOBp6AyKenxtgFDIStsRwgZJZalEMExXRaS6x" />
+			<div
+				class="w-8 h-8 rounded-full border-2 border-background bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-on-surface-variant">
+				+5
+			</div>
+		</div>
+		<div class="h-8 w-px bg-outline-variant mx-2"></div>
+		<button
+			class="flex items-center gap-2 px-4 py-2 bg-surface-container-high border border-outline-variant text-sm hover:border-primary transition-colors">
+			<span class="text-lg">filter - coming soon</span>
+		</button>
+	</div>
+</header>
+
+{# ── Kanban Board ── #}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+	{% for category in categories %} {% set col_cards = cards_by_category[category.id] ?? [] %}
+	<section class="flex flex-col gap-4">
+		<div class="flex items-center justify-between px-2 mb-2">
+			<div class="flex items-center gap-2">
+				<span class="w-2 h-2 bg-on-surface-variant"></span>
+				<h2 class="font-body font-bold text-on-surface-variant uppercase text-xs tracking-widest">
+					{{ category.name }}
+				</h2>
+				<span
+					data-card-count
+					class="px-2 py-0.5 bg-surface-container-high text-on-surface-variant text-[10px] border border-outline-variant">
+					{{ col_cards|length }}
+				</span>
+			</div>
+		</div>
+
+		<div class="flex flex-col gap-4" data-drop-zone="{{ category.id }}">
+			{% for card in col_cards %}
+			<div
+				data-card-id="{{ card.id }}"
+				data-category-id="{{ card.category.id }}"
+				class="relative group bg-surface-container-lowest border border-outline-variant font-body text-xs code-shadow cursor-grab hover:border-primary transition-all">
+				{# Dropdown options — en dehors du scroll pour rester fixe #}
+				<div class="absolute bottom-3 right-3 z-10">
+					<button
+						type="button"
+						class="card-options-btn text-tertiary w-6 h-6 flex items-center justify-center hover:text-on-surface transition-colors text-lg leading-none"
+						data-target="card-menu-{{ card.id }}"
+						aria-label="Options">
+						&#8942;
+					</button>
+					<div
+						id="card-menu-{{ card.id }}"
+						class="card-dropdown hidden absolute bottom-3.5 right-6 z-30 bg-surface-container border border-outline-variant w-fit">
+						<button
+							type="button"
+							data-edit-id="{{ card.id }}"
+							data-edit-name="{{ card.name }}"
+							data-edit-description="{{ card.description }}"
+							data-edit-category-id="{{ card.category.id }}"
+							data-edit-position="{{ card.position }}"
+							class="w-full px-4 py-2 text-left text-xs hover:bg-surface-container-high text-on-surface transition-colors flex items-center gap-2">
+							<img src="/assets/img/editer.png" alt="Éditer" class="w-4 h-4" />
+							<span>Éditer</span>
+						</button>
+						<button
+							type="button"
+							class="w-full px-4 py-2 text-left text-xs hover:bg-surface-container-high text-red-400 transition-colors flex items-center gap-2"
+							data-delete-id="{{ card.id }}"
+							data-delete-name="{{ card.name }}">
+							<img src="/assets/img/supprimer.png" alt="Supprimer" class="w-4 h-4" />
+							<span>Supprimer</span>
+						</button>
+					</div>
+				</div>
+
+				{# Indicateur visuel de drag #}
+				<div
+					class="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-70 transition-opacity pointer-events-none">
+					<img class="w-4 h-4" src="/assets/img/prendre.png" alt="image de prise" />
+				</div>
+
+				{# Contenu scrollable #}
+				<div class="h-40 overflow-y-auto p-4 pl-5 pr-8">
+					<div class="flex justify-between items-start mb-3">
+						<span class="text-on-surface-variant font-bold">#{{ card.id }}</span>
+					</div>
+					<h3 class="text-sm font-bold text-on-surface mb-2 leading-tight">{{ card.name }}</h3>
+					<p class="mb-3 text-on-surface-variant text-[11px] leading-relaxed">{{ card.description }}</p>
+				</div>
+			</div>
+
+			{% else %}
+			<p data-empty-message class="text-on-surface-variant text-xs px-2 italic">Aucune carte dans cette colonne.</p>
+			<button
+				type="button"
+				data-open-add-card
+				data-category-id="{{ category.id }}"
+				class="w-2/3 py-2 mx-auto mt-3 bg-primary text-on-primary font-bold glow-primary hover:bg-secondary hover:text-on-secondary transition-all active:scale-95 flex items-center justify-center gap-2 uppercase text-xs tracking-widest">
+				+ Nouvelle tâche
+			</button>
+			{% endfor %}
+		</div>
+
+		{# ── Mobile ── #}
+		<button
+			class="lg:hidden fixed bottom-20 right-6 w-14 h-14 bg-primary text-on-primary shadow-lg glow-primary flex items-center justify-center active:scale-95 transition-transform z-50">
+			<span class="text-2xl">add</span>
+		</button>
+	</section>
+	{% endfor %}
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="/assets/js/addCardModal.js" defer></script>
+<script src="/assets/js/deleteCardModal.js" defer></script>
+<script src="/assets/js/updateCardModal.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script src="/assets/js/dragDrop.js" defer></script>
+<script>
+	document.addEventListener("click", function (e) {
+		const btn = e.target.closest(".card-options-btn");
+		document.querySelectorAll(".card-dropdown").forEach((m) => m.classList.add("hidden"));
+		if (btn) {
+			e.stopPropagation();
+			const menu = document.getElementById(btn.dataset.target);
+			if (menu) menu.classList.remove("hidden");
+		}
+	});
+</script>
+{% endblock %}
